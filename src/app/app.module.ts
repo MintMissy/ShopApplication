@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { ShopModule } from './shop/shop.module';
 import { AppEffects } from './state/app.effects';
 import { metaReducers, reducers } from './state/app.state';
 
@@ -20,6 +21,7 @@ import { metaReducers, reducers } from './state/app.state';
 		AppRoutingModule,
 		CoreModule,
 		SharedModule,
+		ShopModule,
 		StoreModule.forRoot(reducers, { metaReducers }),
 		EffectsModule.forRoot([AppEffects]),
 		StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
