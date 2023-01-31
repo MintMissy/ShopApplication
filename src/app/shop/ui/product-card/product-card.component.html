@@ -4,9 +4,7 @@
 		<mat-card-title class="card__title">{{ product.title }}</mat-card-title>
 	</mat-card-header>
 	<mat-card-content>
-		<p class="card__price">
-			${{ product.price * (100 - product.discountPercentage) * 0.01 | number : "1.2-2" }}
-		</p>
+		<p class="card__price">${{ product.price * (100 - product.discountPercentage) * 0.01 | number : "1.2-2" }}</p>
 		<!-- <p class="card__price">
 			{{ product.price * (100 - product.discountPercentage) * 0.01 | number : "1.2-2" | currency : "USD" }}
 		</p> -->
@@ -27,6 +25,6 @@
 	</mat-card-content>
 	<mat-card-actions class="card__actions">
 		<button mat-raised-button color="accent">Add to Cart</button>
-		<button mat-raised-button color="primary">View Details</button>
+		<button mat-raised-button [routerLink]="['product', product.id]" color="primary">View Details</button>
 	</mat-card-actions>
 </mat-card>

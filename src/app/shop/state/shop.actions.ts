@@ -10,5 +10,8 @@ export const ShopActions = createActionGroup({
 		'Load Products': props<{ category: string; query: string }>(),
 		'Load Products Success': props<{ products: Product[] }>(),
 		'Load Products Failed': emptyProps(),
+		'Load Product': props<{ category: string; query: string }>(),
+		'Load Product Success': props<{ product: Product }>(),
+		'Load Product Failed': emptyProps(),
 	},
 });

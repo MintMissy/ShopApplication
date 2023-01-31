@@ -18,5 +18,8 @@ export const reducer = createReducer(
 	initialState,
 	on(ShopActions.loadProductsSuccess, (state, props): ShopState => {
 		return { ...state, products: props.products };
+	}),
+	on(ShopActions.loadProductSuccess, (state, props): ShopState => {
+		return { ...state, products: [...state.products, props.product] };
 	})
 );
