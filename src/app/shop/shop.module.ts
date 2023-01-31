@@ -1,30 +1,30 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BasketPageContainerComponent } from './feature/basket-page-container/basket-page-container.component';
-import { ShopItemPageComponent } from './feature/shop-item-page/shop-item-page.component';
-import { ShopPageContainerComponent } from './feature/shop-page-container/shop-page-container.component';
-import { BasketItemListComponent } from './ui/basket-item-list/basket-item-list.component';
-import { BasketItemComponent } from './ui/basket-item/basket-item.component';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { CartPageComponent } from './feature/cart-page/cart-page.component';
+import { ProductPageComponent } from './feature/product-page/product-page.component';
+import { ProductsPageComponent } from './feature/products-page/products-page.component';
+import { SumUpCartPipe } from './pipe/sum-up-cart.pipe';
+import { ShopEffects } from './state/shop.effects';
+import * as fromShop from './state/shop.reducer';
+import { CartItemListComponent } from './ui/cart-item-list/cart-item-list.component';
+import { CartItemComponent } from './ui/cart-item/cart-item.component';
+import { ProductCardComponent } from './ui/product-card/product-card.component';
 import { PurchasePreviewComponent } from './ui/purchase-preview/purchase-preview.component';
 import { SearchFiltersComponent } from './ui/search-filters/search-filters.component';
-import { ShopItemCardComponent } from './ui/shop-item-card/shop-item-card.component';
-import { StoreModule } from '@ngrx/store';
-import * as fromShop from './state/shop.reducer';
-import { EffectsModule } from '@ngrx/effects';
-import { ShopEffects } from './state/shop.effects';
-import { SumUpBasketPricePipe } from './pipe/sum-up-basket-price.pipe';
 
 @NgModule({
 	declarations: [
-		ShopItemCardComponent,
-		BasketPageContainerComponent,
-		ShopPageContainerComponent,
+		ProductCardComponent,
+		CartPageComponent,
+		ProductsPageComponent,
 		SearchFiltersComponent,
-		ShopItemPageComponent,
-		BasketItemListComponent,
-		BasketItemComponent,
+		ProductPageComponent,
+		CartItemListComponent,
+		CartItemComponent,
 		PurchasePreviewComponent,
-  SumUpBasketPricePipe,
+		SumUpCartPipe,
 	],
 	imports: [
 		CommonModule,
