@@ -4,10 +4,7 @@ import { NavbarComponent } from './ui/navbar/navbar.component';
 import { FooterComponent } from './ui/footer/footer.component';
 
 @NgModule({
-	declarations: [
-    NavbarComponent,
-    FooterComponent
-  ],
+	declarations: [NavbarComponent, FooterComponent],
 	imports: [CommonModule],
 })
 export class SharedModule {}

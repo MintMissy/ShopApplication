@@ -7,16 +7,13 @@ import * as ShopActions from './shop.actions';
 
 @Injectable()
 export class ShopEffects {
+	loadShops$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(ShopActions.loadShops),
+			/** An EMPTY observable only emits completion. Replace with your own observable API request */
+			concatMap(() => EMPTY as Observable<{ type: string }>)
+		);
+	});
 
-
-  loadShops$ = createEffect(() => {
-    return this.actions$.pipe( 
-
-      ofType(ShopActions.loadShops),
-      /** An EMPTY observable only emits completion. Replace with your own observable API request */
-      concatMap(() => EMPTY as Observable<{ type: string }>)
-    );
-  });
-
-  constructor(private actions$: Actions) {}
+	constructor(private actions$: Actions) {}
 }
