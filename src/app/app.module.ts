@@ -6,10 +6,10 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppEffects } from './app.effects';
 import { CoreModule } from './core/core.module';
-import { metaReducers, reducers } from './state/app.state';
 import { SharedModule } from './shared/shared.module';
+import { AppEffects } from './state/app.effects';
+import { metaReducers, reducers } from './state/app.state';
 
 @NgModule({
 	declarations: [AppComponent],

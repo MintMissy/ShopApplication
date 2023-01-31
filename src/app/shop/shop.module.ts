@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromShop from './state/shop.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ShopEffects } from './state/shop.effects';
+import { SumUpBasketPricePipe } from './pipe/sum-up-basket-price.pipe';
 
 @NgModule({
 	declarations: [
@@ -23,6 +24,7 @@ import { ShopEffects } from './state/shop.effects';
 		BasketItemListComponent,
 		BasketItemComponent,
 		PurchasePreviewComponent,
+  SumUpBasketPricePipe,
 	],
 	imports: [
 		CommonModule,
