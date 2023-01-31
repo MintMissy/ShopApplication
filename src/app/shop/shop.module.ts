@@ -10,6 +10,7 @@ import { ProductsPageComponent } from './feature/products-page/products-page.com
 import { SumUpCartPipe } from './pipe/sum-up-cart.pipe';
 import { ShopRoutingModule } from './shop-routing.module';
 import { ShopEffects } from './state/shop.effects';
+import { ShopFacade } from './state/shop.facade';
 import * as fromShop from './state/shop.reducer';
 import { CartItemListComponent } from './ui/cart-item-list/cart-item-list.component';
 import { CartItemComponent } from './ui/cart-item/cart-item.component';
@@ -36,6 +37,12 @@ import { SearchFiltersComponent } from './ui/search-filters/search-filters.compo
 		HttpClientModule,
 		StoreModule.forFeature(fromShop.shopFeatureKey, fromShop.reducer),
 		EffectsModule.forFeature([ShopEffects]),
+	],
+	providers: [
+		{
+			provide: ShopFacade,
+			useClass: ShopFacade,
+		},
 	],
 })
 export class ShopModule {}

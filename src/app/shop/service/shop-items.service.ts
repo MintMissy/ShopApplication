@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
+import { Product } from '../model/product.model';
+
+type ProductsResponse = {
+	products: Product[]
+}
 
 @Injectable({
 	providedIn: 'root',
@@ -11,22 +16,24 @@ export class ShopItemsService {
 	constructor(private httpClient: HttpClient) {}
 
 	getProduct(productId: string) {
-		return this.httpClient.get(`${this.API_URL}/${productId}`).pipe(catchError((error) => this.handleError(error)));
+		return this.httpClient
+			.get<Product>(`${this.API_URL}/${productId}`)
+			.pipe(catchError((error) => this.handleError(error)));
 	}
 
 	getAllProducts() {
-		return this.httpClient.get(this.API_URL).pipe(catchError((error) => this.handleError(error)));
+		return this.httpClient.get<ProductsResponse>(this.API_URL).pipe(catchError((error) => this.handleError(error)));
 	}
 
 	getProductsByQuery(query: string) {
 		return this.httpClient
-			.get(`${this.API_URL}/search?q=${query}`)
+			.get<ProductsResponse>(`${this.API_URL}/search?q=${query}`)
 			.pipe(catchError((error) => this.handleError(error)));
 	}
 
 	getProductsByCategory(category: string) {
 		return this.httpClient
-			.get(`${this.API_URL}/category/${category}`)
+			.get<ProductsResponse>(`${this.API_URL}/category/${category}`)
 			.pipe(catchError((error) => this.handleError(error)));
 	}
 

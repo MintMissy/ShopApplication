@@ -1,12 +1,15 @@
-<mat-card>
-	<img mat-card-image [src]="product.thumbnail" alt="" aria-hidden="true" />
+<mat-card class="card">
+	<img class="card__image" mat-card-image [src]="product.thumbnail" alt="" aria-hidden="true" />
 	<mat-card-header>
 		<mat-card-title class="card__title">{{ product.title }}</mat-card-title>
 	</mat-card-header>
 	<mat-card-content>
 		<p class="card__price">
-			{{ product.price * (100 - product.discountPercentage) * 0.01 | number : "1.2-2" | currency : "USD" }}
+			${{ product.price * (100 - product.discountPercentage) * 0.01 | number : "1.2-2" }}
 		</p>
+		<!-- <p class="card__price">
+			{{ product.price * (100 - product.discountPercentage) * 0.01 | number : "1.2-2" | currency : "USD" }}
+		</p> -->
 		<p class="card__description">{{ product.description }}</p>
 		<!-- <h3 class="card__rating-title">Product Rating:</h3> -->
 		<!-- <div class="rating">

@@ -1,1 +1,3 @@
-<app-product-card></app-product-card>
+<div class="card-list">
+	<app-product-card *ngFor="let product of products$ | async; trackBy:trackProduct" [product]="product"></app-product-card>
+</div>

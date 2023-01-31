@@ -1,57 +1,63 @@
-.card{
+.card {
+	// height: 100%;
+
+	&__image {
+		height: 300px;
+		object-fit: cover;
+		object-position: top;
+	}
 
 	&__title {
+		margin-bottom: 1rem;
 		font-size: 1.25rem;
 		font-weight: 600;
-		margin-bottom: 1rem;
 	}
-	
+
 	&__description {
 		color: var(--color-text-3);
 	}
-	
+
 	&__rating-title {
 		margin-bottom: 0;
 		font-weight: 500;
 	}
-	
+
 	&__price-title {
 		margin-bottom: 0.5rem;
 		font-weight: 500;
 	}
-	
+
 	&__price {
+		margin-bottom: 1rem;
 		font-size: 1.75rem;
 		font-weight: 600;
-		margin-bottom: 1rem;
 	}
-	
+
 	&__discount {
 		display: flex;
+		color: var(--color-text-3);
 		font-size: 1rem;
 		gap: 0.5rem;
-		color: var(--color-text-3);
 	}
-	
+
 	&__price-before {
 		text-decoration: line-through;
 	}
-	
+
 	&__discount-rate {
 	}
-	
+
 	&__actions {
 		display: flex;
-		margin-top: .75rem;
+		margin-top: 0.75rem;
 		gap: 1rem;
 	}
 }
 
-
 .rating {
-	margin-bottom: .75rem;
+	margin-bottom: 0.75rem;
 
-	&__star{
+	&__star {
 		color: var(--color-text-2);
 	}
 }
