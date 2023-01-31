@@ -1,12 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'sumUpCart'
+	name: 'sumUpCart',
 })
 export class SumUpCartPipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
-  }
-
+	transform(value: unknown, ...args: unknown[]): unknown {
+		return null;
+	}
 }
