@@ -3,10 +3,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { SharedModule } from '../shared/shared.module';
 import { CartPageComponent } from './feature/cart-page/cart-page.component';
 import { ProductPageComponent } from './feature/product-page/product-page.component';
 import { ProductsPageComponent } from './feature/products-page/products-page.component';
 import { SumUpCartPipe } from './pipe/sum-up-cart.pipe';
+import { ShopRoutingModule } from './shop-routing.module';
 import { ShopEffects } from './state/shop.effects';
 import * as fromShop from './state/shop.reducer';
 import { CartItemListComponent } from './ui/cart-item-list/cart-item-list.component';
@@ -29,6 +31,8 @@ import { SearchFiltersComponent } from './ui/search-filters/search-filters.compo
 	],
 	imports: [
 		CommonModule,
+		ShopRoutingModule,
+		SharedModule,
 		HttpClientModule,
 		StoreModule.forFeature(fromShop.shopFeatureKey, fromShop.reducer),
 		EffectsModule.forFeature([ShopEffects]),

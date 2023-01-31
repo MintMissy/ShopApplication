@@ -1,1 +1,29 @@
-<p>item-card works!</p>
+<mat-card>
+	<img mat-card-image [src]="product.thumbnail" alt="" aria-hidden="true" />
+	<mat-card-header>
+		<mat-card-title class="card__title">{{ product.title }}</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<p class="card__price">
+			{{ product.price * (100 - product.discountPercentage) * 0.01 | number : "1.2-2" | currency : "USD" }}
+		</p>
+		<p class="card__description">{{ product.description }}</p>
+		<!-- <h3 class="card__rating-title">Product Rating:</h3> -->
+		<!-- <div class="rating">
+			<mat-icon class="rating__star">star</mat-icon>
+			<mat-icon class="rating__star">star</mat-icon>
+			<mat-icon class="rating__star">star</mat-icon>
+			<mat-icon class="rating__star">star</mat-icon>
+			<mat-icon class="rating__star">star</mat-icon>
+		</div> -->
+		<!-- <h3 class="card__price-title">Product Price:</h3> -->
+		<!-- <div class="card__discount">
+			<span class="card__price-before">{{ product.price | number : "1.2-2" | currency : "USD" }}</span>
+			<span class="card__discount-rate">{{ product.discountPercentage | number : "0.0-0" }}% off</span>
+		</div> -->
+	</mat-card-content>
+	<mat-card-actions class="card__actions">
+		<button mat-raised-button color="accent">Add to Cart</button>
+		<button mat-raised-button color="primary">View Details</button>
+	</mat-card-actions>
+</mat-card>
