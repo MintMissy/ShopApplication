@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 })
 export class CounterComponent implements OnInit {
 	@Input() startValue = 1;
-	@Input() minValue = 0;
+	@Input() minValue = 1;
 	@Input() maxValue = 99;
 	@Output() valueChange = new EventEmitter<number>();
 

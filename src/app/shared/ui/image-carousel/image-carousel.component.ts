@@ -15,26 +15,8 @@ export class ImageCarouselComponent {
 	];
 	currentIndex = 0;
 
-	get previousImage(): string {
-		if (this.images === undefined) {
-			return '';
-		}
-
-		const index = this.currentIndex - 1 < 0 ? this.images.length - 1 : this.currentIndex - 1;
-		return this.images[index];
-	}
-
 	get currentImage(): string {
 		return this.images === undefined ? '' : this.images[this.currentIndex];
-	}
-
-	get nextImage(): string {
-		if (this.images === undefined) {
-			return '';
-		}
-
-		const index = this.currentIndex + 1 >= this.images.length ? 0 : this.currentIndex + 1;
-		return this.images[index];
 	}
 
 	onSlideNext() {
