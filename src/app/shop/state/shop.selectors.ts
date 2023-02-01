@@ -14,6 +14,23 @@ export const selectProducts = createSelector(selectShopState, (state) => {
 	return products;
 });
 
+export const selectProductsByCategory = (category: string) => {
+	return createSelector(selectShopState, (state) => {
+		let products = state.products;
+		const searchFilters = {
+			category: category,
+			minPrice: null,
+			maxPrice: null,
+			productName: null,
+			sortingType: null,
+		};
+		
+		products = applyProductFilters(searchFilters, products);
+
+		return products;
+	});
+};
+
 export const selectProduct = (productId: number) => {
 	return createSelector(selectShopState, (state) => {
 		return state.products.find((product) => product.id === productId);
@@ -23,5 +40,3 @@ export const selectProduct = (productId: number) => {
 export const selectCategories = createSelector(selectShopState, (state) => {
 	return state.categories;
 });
-
-

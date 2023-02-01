@@ -18,14 +18,14 @@ export const initialState: ShopState = {
 		minPrice: null,
 		maxPrice: null,
 		productName: null,
-		sortingType: null
+		sortingType: null,
 	},
 	categories: [],
 };
 
 export const reducer = createReducer(
 	initialState,
-	on(ShopActions.loadProductsSuccess, (state, props): ShopState => {
+	on(ShopActions.loadProductsSuccess, ShopActions.loadProductsByCategorySuccess, (state, props): ShopState => {
 		return { ...state, products: props.products };
 	}),
 	on(ShopActions.loadProductSuccess, (state, props): ShopState => {

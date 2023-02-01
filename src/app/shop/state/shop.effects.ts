@@ -8,14 +8,24 @@ import { ShopActions } from './shop.actions';
 
 @Injectable()
 export class ShopEffects {
-	loadShops$ = createEffect(() => {
+	loadProducts$ = createEffect(() => {
 		return this.actions$.pipe(
 			ofType(ShopActions.loadProducts),
-			/** An EMPTY observable only emits completion. Replace with your own observable API request */
 			switchMap(() => {
 				return this.shopItemsService.getAllProducts().pipe(
 					map((response) => ShopActions.loadProductsSuccess({ products: response.products })),
 					catchError(() => of(ShopActions.loadProductsFailed))
+				);
+			})
+		);
+	});
+	loadProductsByCategory$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(ShopActions.loadProductsByCategory),
+			switchMap((props) => {
+				return this.shopItemsService.getProductsByCategory(props.category).pipe(
+					map((response) => ShopActions.loadProductsByCategorySuccess({ products: response.products })),
+					catchError(() => of(ShopActions.loadProductsByCategoryFailed))
 				);
 			})
 		);

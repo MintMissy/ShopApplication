@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { SearchFilters } from '../ui/search-filters/search-filters.component';
 import { ShopActions } from './shop.actions';
-import { selectCategories, selectProduct, selectProducts } from './shop.selectors';
+import { selectCategories, selectProduct, selectProducts, selectProductsByCategory } from './shop.selectors';
 
 @Injectable()
 export class ShopFacade {
@@ -11,10 +11,12 @@ export class ShopFacade {
 
 	constructor(private store: Store) {}
 
-	updateSearchQuery(query: string) {}
-
 	getProduct(productId: number) {
 		return this.store.select(selectProduct(productId));
+	}
+
+	getProductsByCategory(category: string) {
+		return this.store.select(selectProductsByCategory(category));
 	}
 
 	loadProducts() {
@@ -23,6 +25,10 @@ export class ShopFacade {
 
 	loadCategories() {
 		this.store.dispatch(ShopActions.loadCategories());
+	}
+
+	loadProductsByCategory(category: string) {
+		return this.store.dispatch(ShopActions.loadProductsByCategory({ category: category }));
 	}
 
 	updateFilters(filters: SearchFilters) {
