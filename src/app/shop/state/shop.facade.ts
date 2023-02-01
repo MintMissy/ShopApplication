@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ShopActions } from './shop.actions';
-import { selectProduct, selectProducts } from './shop.selectors';
+import { selectCategories, selectProduct, selectProducts } from './shop.selectors';
 
 @Injectable()
 export class ShopFacade {
 	products$ = this.store.select(selectProducts);
+	categories$ = this.store.select(selectCategories);
 
 	constructor(private store: Store) {}
 
@@ -17,5 +18,9 @@ export class ShopFacade {
 
 	loadProducts() {
 		this.store.dispatch(ShopActions.loadProducts({ category: '', query: '' }));
+	}
+
+	loadCategories() {
+		this.store.dispatch(ShopActions.loadCategories());
 	}
 }

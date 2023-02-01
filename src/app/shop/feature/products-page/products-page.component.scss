@@ -1,8 +1,15 @@
+.page {
+	display: flex;
+	align-items: start;
+	padding: 1rem;
+	padding-top: 5rem;
+	gap: 3rem;
+}
+
 .card-list {
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
-	padding: 1rem;
-	padding-top: 5rem;
+	width: auto;
 	gap: 1rem;
 
 	@media screen and (min-width: 640px) {

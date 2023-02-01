@@ -4,8 +4,8 @@ import { catchError, throwError } from 'rxjs';
 import { Product } from '../model/product.model';
 
 type ProductsResponse = {
-	products: Product[]
-}
+	products: Product[];
+};
 
 @Injectable({
 	providedIn: 'root',
@@ -38,7 +38,9 @@ export class ShopItemsService {
 	}
 
 	getCategories() {
-		return this.httpClient.get(`${this.API_URL}/categories`).pipe(catchError((error) => this.handleError(error)));
+		return this.httpClient
+			.get<string[]>(`${this.API_URL}/categories`)
+			.pipe(catchError((error) => this.handleError(error)));
 	}
 
 	private handleError(error: any) {

@@ -20,6 +20,17 @@ export class ShopEffects {
 			})
 		);
 	});
+	loadCategories$ = createEffect(() => {
+		return this.actions$.pipe(
+			ofType(ShopActions.loadCategories),
+			switchMap(() => {
+				return this.shopItemsService.getCategories().pipe(
+					map((response) => ShopActions.loadCategoriesSuccess({ categories: response })),
+					catchError(() => of(ShopActions.loadProductsFailed))
+				);
+			})
+		);
+	});
 
 	constructor(private actions$: Actions, private shopItemsService: ShopItemsService) {}
 }

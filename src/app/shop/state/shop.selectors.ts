@@ -12,3 +12,7 @@ export const selectProduct = (productId: number) => {
 		return state.products.find((product) => product.id === productId);
 	});
 };
+
+export const selectCategories = createSelector(selectShopState, (state) => {
+	return state.categories;
+});

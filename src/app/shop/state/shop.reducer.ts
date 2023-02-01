@@ -7,11 +7,13 @@ export const shopFeatureKey = 'shop';
 export interface ShopState {
 	products: Product[];
 	productsQuery: string;
+	categories: string[];
 }
 
 export const initialState: ShopState = {
 	products: [],
 	productsQuery: '',
+	categories: [],
 };
 
 export const reducer = createReducer(
@@ -21,5 +23,8 @@ export const reducer = createReducer(
 	}),
 	on(ShopActions.loadProductSuccess, (state, props): ShopState => {
 		return { ...state, products: [...state.products, props.product] };
+	}),
+	on(ShopActions.loadCategoriesSuccess, (state, props): ShopState => {
+		return { ...state, categories: props.categories };
 	})
 );
