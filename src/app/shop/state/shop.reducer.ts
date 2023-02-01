@@ -1,18 +1,25 @@
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../model/product.model';
+import { SearchFilters } from '../ui/search-filters/search-filters.component';
 import { ShopActions } from './shop.actions';
 
 export const shopFeatureKey = 'shop';
 
 export interface ShopState {
 	products: Product[];
-	productsQuery: string;
+	searchFilters: SearchFilters;
 	categories: string[];
 }
 
 export const initialState: ShopState = {
 	products: [],
-	productsQuery: '',
+	searchFilters: {
+		category: null,
+		minPrice: null,
+		maxPrice: null,
+		productName: null,
+		sortingType: null
+	},
 	categories: [],
 };
 
@@ -26,5 +33,8 @@ export const reducer = createReducer(
 	}),
 	on(ShopActions.loadCategoriesSuccess, (state, props): ShopState => {
 		return { ...state, categories: props.categories };
+	}),
+	on(ShopActions.updateFilters, (state, props): ShopState => {
+		return { ...state, searchFilters: props.newFilters };
 	})
 );

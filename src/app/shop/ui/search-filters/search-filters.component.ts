@@ -6,7 +6,17 @@ export type SearchFilters = {
 	minPrice: number | null;
 	maxPrice: number | null;
 	productName: string | null;
+	sortingType: SortingType;
 };
+
+export type SortingType =
+	| null
+	| 'MinimumPrice'
+	| 'MaximumPrice'
+	| 'CategoryAscending'
+	| 'CategoryDescending'
+	| 'NameAscending'
+	| 'NameDescending';
 
 @Component({
 	selector: 'app-search-filters',
@@ -21,6 +31,7 @@ export class SearchFiltersComponent {
 	filtersForm = this.fb.group(
 		{
 			category: [null, []],
+			sortingType: [null, []],
 			minPrice: [null, [Validators.min(0)]],
 			maxPrice: [null, [Validators.min(0)]],
 			productName: [null, []],
@@ -37,6 +48,10 @@ export class SearchFiltersComponent {
 
 	get category() {
 		return this.filtersForm.get('category') as FormControl<string | null>;
+	}
+
+	get sortingType() {
+		return this.filtersForm.get('sortingType') as FormControl<string | null>;
 	}
 
 	get minPrice() {

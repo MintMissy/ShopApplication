@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { SearchFilters } from '../ui/search-filters/search-filters.component';
 import { ShopActions } from './shop.actions';
 import { selectCategories, selectProduct, selectProducts } from './shop.selectors';
 
@@ -22,5 +23,9 @@ export class ShopFacade {
 
 	loadCategories() {
 		this.store.dispatch(ShopActions.loadCategories());
+	}
+
+	updateFilters(filters: SearchFilters) {
+		this.store.dispatch(ShopActions.updateFilters({ newFilters: filters }));
 	}
 }

@@ -23,6 +23,18 @@
 		<mat-label>Product Name</mat-label>
 		<input matInput placeholder="Product Name" value="" formControlName="productName" />
 	</mat-form-field>
+	<mat-form-field appearance="fill">
+		<mat-label>Sort By</mat-label>
+		<mat-select placeholder="Order by" [formControl]="sortingType">
+			<mat-option [value]="null">None</mat-option>
+			<mat-option value="MinimumPrice">Minimum Price</mat-option>
+			<mat-option value="MaximumPrice">Maximum Price</mat-option>
+			<mat-option value="CategoryAscending">Category Ascending</mat-option>
+			<mat-option value="CategoryDescending">Category Descending</mat-option>
+			<mat-option value="NameAscending">Name Ascending</mat-option>
+			<mat-option value="NameDescending">Name Descending</mat-option>
+		</mat-select>
+	</mat-form-field>
 	<div class="filters__actions">
 		<button mat-raised-button color="accent" class="button-filter">Filter Items</button>
 		<button mat-raised-button class="button-filter">Reset Filters</button>

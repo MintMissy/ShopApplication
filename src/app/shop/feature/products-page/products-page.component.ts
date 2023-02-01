@@ -25,5 +25,7 @@ export class ProductsPageComponent implements OnInit {
 		return product.title;
 	}
 
-	onFiltersApply(filters: SearchFilters) {}
+	onFiltersApply(filters: SearchFilters) {
+		this.shopFacade.updateFilters(filters);
+	}
 }

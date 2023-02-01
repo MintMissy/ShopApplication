@@ -1,5 +1,6 @@
 import { createAction, createActionGroup, emptyProps, props } from '@ngrx/store';
 import { Product } from '../model/product.model';
+import { SearchFilters } from '../ui/search-filters/search-filters.component';
 
 export const loadShops = createAction('[Shop] Load Shops');
 
@@ -16,5 +17,6 @@ export const ShopActions = createActionGroup({
 		'Load Categories': emptyProps,
 		'Load Categories Success': props<{ categories: string[] }>(),
 		'Load Categories Failed': emptyProps(),
+		'Update Filters': props<{newFilters: SearchFilters}>(),
 	},
 });
