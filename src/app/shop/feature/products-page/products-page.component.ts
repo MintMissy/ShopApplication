@@ -21,10 +21,6 @@ export class ProductsPageComponent implements OnInit {
 		this.shopFacade.loadProducts();
 	}
 
-	trackProduct(index: number, product: Product) {
-		return product.title;
-	}
-
 	onFiltersApply(filters: SearchFilters) {
 		this.shopFacade.updateFilters(filters);
 	}

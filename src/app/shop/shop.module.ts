@@ -19,6 +19,7 @@ import { CartItemComponent } from './ui/cart-item/cart-item.component';
 import { ProductCardComponent } from './ui/product-card/product-card.component';
 import { PurchasePreviewComponent } from './ui/purchase-preview/purchase-preview.component';
 import { SearchFiltersComponent } from './ui/search-filters/search-filters.component';
+import { ProductsListComponent } from './ui/products-list/products-list.component';
 
 @NgModule({
 	declarations: [
@@ -32,6 +33,7 @@ import { SearchFiltersComponent } from './ui/search-filters/search-filters.compo
 		PurchasePreviewComponent,
 		SumUpCartPipe,
 		ProductPricePipe,
+  ProductsListComponent,
 	],
 	imports: [
 		CommonModule,
