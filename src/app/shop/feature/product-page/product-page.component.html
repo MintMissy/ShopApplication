@@ -1,4 +1,44 @@
-<div class="product" *ngIf="(product$ | async) as product">
-	<app-image-carousel class="carousel" [images]="product.images"></app-image-carousel>
-	{{ product | json }}
+<div class="product" *ngIf="product$ | async as product">
+	<div class="product__info">
+		<h1 class="product__title">{{ product.title }}</h1>
+		<div class="rating">
+			<!-- TODO reviews -->
+			<div class="rating__stars">
+				<mat-icon class="rating__star">star</mat-icon>
+				<mat-icon class="rating__star">star</mat-icon>
+				<mat-icon class="rating__star">star</mat-icon>
+				<mat-icon class="rating__star">star</mat-icon>
+				<mat-icon class="rating__star">star</mat-icon>
+			</div>
+			<div class="rating__reviews-amount">(15 Reviews)</div>
+		</div>
+
+		<h2 class="product__title-description">Product Description:</h2>
+		<p>{{ product.description }}</p>
+
+		<h2 class="product__title-details">Details:</h2>
+		<p class="product__detail">
+			Manufacturer: <span>{{ product.brand }}</span>
+		</p>
+		<p class="product__detail">
+			Amount in stock: <span>{{ product.stock }}</span>
+		</p>
+
+		<div class="break-line"></div>
+
+		<div class="price">
+			<div class="price__discount">
+				<span class="price__discount">You save {{ product.discountPercentage | number : "0.0-0" }}%</span>
+			</div>
+			<div class="price__container">
+				<span class="price__original">${{ product.price | number : "1.2-2" }}</span>
+				<span class="price__current">${{ product | productPrice }}</span>
+			</div>
+		</div>
+
+		<div class="product__actions">
+			<button mat-raised-button color="accent">Add to Cart</button>
+		</div>
+	</div>
+	<app-image-carousel class="product__carousel" [images]="product.images"> </app-image-carousel>
 </div>

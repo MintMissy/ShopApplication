@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CartPageComponent } from './feature/cart-page/cart-page.component';
 import { ProductPageComponent } from './feature/product-page/product-page.component';
 import { ProductsPageComponent } from './feature/products-page/products-page.component';
+import { ProductPricePipe } from './pipe/product-price.pipe';
 import { SumUpCartPipe } from './pipe/sum-up-cart.pipe';
 import { ShopRoutingModule } from './shop-routing.module';
 import { ShopEffects } from './state/shop.effects';
@@ -29,6 +30,7 @@ import { SearchFiltersComponent } from './ui/search-filters/search-filters.compo
 		CartItemComponent,
 		PurchasePreviewComponent,
 		SumUpCartPipe,
+		ProductPricePipe,
 	],
 	imports: [
 		CommonModule,
@@ -43,6 +45,7 @@ import { SearchFiltersComponent } from './ui/search-filters/search-filters.compo
 			provide: ShopFacade,
 			useClass: ShopFacade,
 		},
+		DecimalPipe,
 	],
 })
 export class ShopModule {}
