@@ -82,6 +82,16 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+mat-form-field {
+  mat-error {
+      display: none !important;
+  }
+
+  mat-error:first-child {
+      display: block !important;
+  }
+}
+
 html,
 body {
 	height: 100%;

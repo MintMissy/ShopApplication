@@ -3,17 +3,19 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Brave Debug",
+			"type": "chrome",
+			"request": "launch",
+			"url": "http://localhost:4200/",
+			"runtimeExecutable": "C:/Program Files/BraveSoftware/Brave-Browser-Beta/Application/brave.exe",
+			"userDataDir": false,
+			"runtimeArgs": ["--profile-directory=Default"]
+		},
+		{
 			"name": "Launch Chrome",
 			"request": "launch",
 			"type": "chrome",
 			"url": "http://localhost:4200",
-			"webRoot": "${workspaceFolder}"
-		},
-		{
-			"name": "Attach to Chrome",
-			"port": 9222,
-			"request": "attach",
-			"type": "chrome",
 			"webRoot": "${workspaceFolder}"
 		},
 		{

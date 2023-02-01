@@ -1,7 +1,7 @@
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { SharedModule } from '../shared/shared.module';
@@ -38,6 +38,7 @@ import { SearchFiltersComponent } from './ui/search-filters/search-filters.compo
 		ShopRoutingModule,
 		SharedModule,
 		HttpClientModule,
+		ReactiveFormsModule,
 		FormsModule,
 		StoreModule.forFeature(fromShop.shopFeatureKey, fromShop.reducer),
 		EffectsModule.forFeature([ShopEffects]),
