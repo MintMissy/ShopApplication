@@ -1,1 +1,1 @@
-https://dummyjson.com/products
+Add exceptions to search by category selector
