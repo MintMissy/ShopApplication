@@ -54,4 +54,8 @@ export class ImageCarouselComponent {
 	selectImage(index: number) {
 		this.currentIndex = index;
 	}
+
+	onMouseOver(index: number) {
+		this.selectImage(index);
+	}
 }

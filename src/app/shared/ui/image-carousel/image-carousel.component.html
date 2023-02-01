@@ -1,23 +1,31 @@
 <div class="carousel">
-	<div class="images">
-		<img class="images__image images__current" [src]="currentImage" />
-		<img class="images__image images__previous" [src]="previousImage" />
-		<img class="images__image images__next" [src]="nextImage" />
+	<div class="carousel__image-container">
+		<img class="carousel__image" [src]="currentImage" />
+		<img class="carousel__image" [src]="previousImage" />
+		<img class="carousel__image" [src]="nextImage" />
+		<div class="carousel__navigation">
+			<button
+				(click)="onSlidePrevious()"
+				class="navigation-button navigation-button--previous"
+				aria-label="Previous Image"
+			>
+				<mat-icon class="icon">arrow_back_ios_new</mat-icon>
+			</button>
+			<button class="navigation-button navigation-button--next" (click)="onSlideNext()" aria-label="Next Image">
+				<mat-icon class="icon">arrow_forward_ios_new</mat-icon>
+			</button>
+		</div>
 	</div>
-	<button class="carousel__button carousel__button--previous" (click)="onSlidePrevious()" aria-label="Previous Image">
-		<mat-icon class="icon">arrow_back_ios_new</mat-icon>
-	</button>
-	<button class="carousel__button carousel__button--next" (click)="onSlideNext()" aria-label="Next Image">
-		<mat-icon class="icon">arrow_forward_ios_new</mat-icon>
-	</button>
-	<div class="carousel__links">
-		<button
-			class="carousel__link"
+	<div class="carousel__control">
+		<img
 			*ngFor="let image of images; let i = index"
+			[src]="image"
 			(click)="selectImage(i)"
-			[attr.aria-label]="'Select image ' + (i + 1)"
+			(mouseover)="onMouseOver(i)"
 			[class.active]="i === currentIndex"
-		></button>
+			class="carousel__control__image"
+			alt=""
+			aria-hidden="true"
+		/>
 	</div>
 </div>
-<span class="material-symbols-outlined"> </span>

@@ -1,83 +1,80 @@
 .carousel {
-	position: relative;
+	display: flex;
+	flex-direction: column;
 	height: 100%;
 
-	.images {
-		position: absolute;
-		inset: 0;
+	&__image-container {
+		position: relative;
+		height: 100%;
+	}
 
-		&__image {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			inset: 0;
-		}
+	&__image {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 
 		&__current {
 			z-index: 1;
 		}
-		&__next {
-		}
 	}
 
-	&__button {
+	&__control {
 		display: flex;
-		position: absolute;
-		top: 50%;
-		align-items: center;
-		justify-content: center;
-		padding: 0.5rem;
-		border: none;
-		border-radius: 0.5rem;
-		background: transparent;
-		cursor: pointer;
-		translate: 0% -50%;
-		z-index: 5;
-
-		&:hover {
-			background-color: rgba(0, 0, 0, 0.2);
-		}
-
-		.icon {
-			text-align: center;
-		}
-	}
-
-	&__button--previous {
-		left: 1rem;
-	}
-
-	&__button--next {
-		right: 1rem;
-	}
-
-	&__links {
-		position: absolute;
-		display: flex;
-		right: 0;
-		bottom: 1rem;
-		left: 0;
-		justify-content: center;
+		height: 8rem;
+		padding: 1rem;
 		gap: 0.5rem;
-		z-index: 5;
-	}
 
-	&__link {
-		width: 10px;
-		height: 10px;
-		border-radius: 4px;
-		border: none;
+		&__image {
+			width: 4rem;
+			height: 4rem;
+			padding: 0.5rem;
+			border: 1px solid rgb(204, 204, 204);
+			border-radius: 4px;
+			cursor: pointer;
+
+			&.active {
+				border-color: rgb(97, 97, 97);
+			}
+		}
+	}
+}
+
+.carousel__image-container:hover .navigation-button{
+	opacity: 1;
+}
+
+.navigation-button {
+	display: flex;
+	transition: opacity 0.2s;
+	opacity: 0;
+	z-index: 5;
+	position: absolute;
+	top: 50%;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+	border: none;
+	border-radius: 0.5rem;
+	background: transparent;
+	cursor: pointer;
+	translate: 0% -50%;
+
+	&:hover {
 		background-color: rgba(0, 0, 0, 0.2);
-		padding: 0;
-		cursor: pointer;
-
-		&.active{
-			background-color: rgba(0, 0, 0, 0.4);
-		}
-
-		&:hover{
-			background-color: rgba(0, 0, 0, 0.4);
-		}
 	}
+
+	.icon {
+		text-align: center;
+	}
+}
+
+.navigation-button--previous {
+	left: 1rem;
+}
+
+.navigation-button--next {
+	right: 1rem;
 }
