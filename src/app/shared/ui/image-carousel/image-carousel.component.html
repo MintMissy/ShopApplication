@@ -1,0 +1,23 @@
+<div class="carousel">
+	<div class="images">
+		<img class="images__image images__current" [src]="currentImage" />
+		<img class="images__image images__previous" [src]="previousImage" />
+		<img class="images__image images__next" [src]="nextImage" />
+	</div>
+	<button class="carousel__button carousel__button--previous" (click)="onSlidePrevious()" aria-label="Previous Image">
+		<mat-icon class="icon">arrow_back_ios_new</mat-icon>
+	</button>
+	<button class="carousel__button carousel__button--next" (click)="onSlideNext()" aria-label="Next Image">
+		<mat-icon class="icon">arrow_forward_ios_new</mat-icon>
+	</button>
+	<div class="carousel__links">
+		<button
+			class="carousel__link"
+			*ngFor="let image of images; let i = index"
+			(click)="selectImage(i)"
+			[attr.aria-label]="'Select image ' + (i + 1)"
+			[class.active]="i === currentIndex"
+		></button>
+	</div>
+</div>
+<span class="material-symbols-outlined"> </span>

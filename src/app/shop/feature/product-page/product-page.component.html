@@ -1,3 +1,4 @@
-<div class="product">
-	{{ product$ | async | json }}
+<div class="product" *ngIf="(product$ | async) as product">
+	<app-image-carousel class="carousel" [images]="product.images"></app-image-carousel>
+	{{ product | json }}
 </div>
