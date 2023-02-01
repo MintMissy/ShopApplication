@@ -1,0 +1,40 @@
+$border-color: rgb(209, 209, 209);
+
+.counter {
+	display: flex;
+	align-items: stretch;
+	border: 1px solid $border-color;
+	border-radius: 4px;
+	height: 36px;
+
+	&__button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem 0.5rem;
+		border: unset;
+		background: transparent;
+
+		mat-icon {
+			$size: 1rem;
+			width: $size;
+			height: $size;
+			font-size: $size;
+		}
+	}
+
+	&__input {
+		display: block;
+		width: 3rem;
+		border: none;
+		text-align: center;
+	}
+}
+
+.button-decrement {
+	border-right: 1px solid $border-color;
+}
+
+.button-increment {
+	border-left: 1px solid $border-color;
+}
