@@ -10,7 +10,7 @@ type ProductsResponse = {
 @Injectable({
 	providedIn: 'root',
 })
-export class ShopItemsService {
+export class ShopService {
 	private readonly API_URL = 'https://dummyjson.com/products';
 
 	constructor(private httpClient: HttpClient) {}

@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { ShopItemsService } from '../service/shop-items.service';
+import { ShopService } from '../service/shop.service';
 import { ShopActions } from './shop.actions';
 
 @Injectable()
@@ -32,5 +32,5 @@ export class ShopEffects {
 		);
 	});
 
-	constructor(private actions$: Actions, private shopItemsService: ShopItemsService) {}
+	constructor(private actions$: Actions, private shopItemsService: ShopService) {}
 }

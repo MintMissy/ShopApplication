@@ -1,5 +1,5 @@
 <div class="page">
-	<app-search-filters [categories]="categories$ | async" (filtersApply)="onFiltersApply($event)"></app-search-filters>
+	<app-search-filters class="search-filters" [categories]="categories$ | async" (filtersApply)="onFiltersApply($event)"></app-search-filters>
 	<div class="card-list">
 		<app-product-card
 			*ngFor="let product of products$ | async; trackBy: trackProduct"

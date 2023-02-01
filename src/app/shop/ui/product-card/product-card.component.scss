@@ -1,36 +1,39 @@
 .card {
-	// height: 100%;
-
 	&__image {
-		height: 300px;
+		height: 150px;
 		object-fit: cover;
 		object-position: top;
 	}
 
 	&__title {
-		margin-bottom: 1rem;
 		font-size: 1.25rem;
 		font-weight: 600;
+		line-height: 1.25;
 	}
 
 	&__description {
 		color: var(--color-text-3);
 	}
 
-	&__price-title {
-		margin-bottom: 0.5rem;
-		font-weight: 500;
-	}
-
 	&__price {
+		display: flex;
+		gap: .25rem;
 		margin-bottom: 1rem;
 		font-size: 1.75rem;
-		font-weight: 600;
+
+		&__original {
+			color: var(--color-text-3);
+			font-size: 1rem;
+			text-decoration: line-through;
+		}
+
+		&__now {
+			font-size: 1rem;
+		}
 	}
 
 	&__actions {
 		display: flex;
-		margin-top: 0.75rem;
 		gap: 1rem;
 	}
 }

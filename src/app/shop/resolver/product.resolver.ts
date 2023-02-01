@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@a
 import { Store } from '@ngrx/store';
 import { catchError, EMPTY, map, Observable, of, take } from 'rxjs';
 import { Product } from '../model/product.model';
-import { ShopItemsService } from '../service/shop-items.service';
+import { ShopService } from '../service/shop.service';
 import { ShopActions } from '../state/shop.actions';
 import { selectProduct } from '../state/shop.selectors';
 
@@ -11,7 +11,7 @@ import { selectProduct } from '../state/shop.selectors';
 	providedIn: 'root',
 })
 export class ProductResolver implements Resolve<Product | null> {
-	constructor(private shopItemsService: ShopItemsService, private store: Store, private router: Router) {}
+	constructor(private shopItemsService: ShopService, private store: Store, private router: Router) {}
 
 	resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Product | null> {
 		const productId = route.paramMap.get('id');

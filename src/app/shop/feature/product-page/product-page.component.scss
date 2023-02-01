@@ -1,21 +1,26 @@
 .product {
 	display: flex;
+	flex-direction: column-reverse;
 	flex-wrap: wrap;
-	padding: 1rem;
 	padding-top: 5rem;
 	gap: 1rem;
+	
+	@media screen and (min-width: 350px) {
+		padding: 5rem 1rem 1rem;
+	}
+
+	@media screen and (min-width: 800px) {
+		flex-direction: row;
+	}
 
 	&__carousel {
 		display: block;
 		flex: 1;
-		width: 50%;
-		height: 400px;
 		box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 	}
 
 	&__info {
 		flex: 1;
-		width: 50%;
 		padding: 1rem;
 		background-color: #ffffff;
 		box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
