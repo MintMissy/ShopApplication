@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Product } from '../model/product.model';
+import { CartItem } from '../model/shopping-cart.model';
 import { SearchFilters } from '../ui/search-filters/search-filters.component';
 import { ShopActions } from './shop.actions';
 import {
-	selectCategories, selectItemsFromCart, selectProduct,
+	selectAmountInCart,
+	selectCategories,
+	selectItemsFromCart,
+	selectProduct,
 	selectProducts,
-	selectProductsByCategory
+	selectProductsByCategory,
 } from './shop.selectors';
 
 @Injectable()
@@ -17,8 +21,16 @@ export class ShopFacade {
 
 	constructor(private store: Store) {}
 
+	addToCart(cartItem: CartItem) {
+		this.store.dispatch(ShopActions.upsertItemToCart(cartItem));
+	}
+
 	getProduct(productId: number) {
 		return this.store.select(selectProduct(productId));
+	}
+
+	getAmountInCart(productId: number) {
+		return this.store.select(selectAmountInCart(productId));
 	}
 
 	getProductsByCategory(category: string) {

@@ -43,7 +43,7 @@ export const reducer = createReducer(
 		return { ...state, searchFilters: props.newFilters };
 	}),
 	on(ShopActions.upsertItemToCart, (state, props): ShopState => {
-		const shoppingCart = { ...state.shoppingCart };
+		const shoppingCart = { ...state.shoppingCart, products: { ...state.shoppingCart.products } };
 		const cartItem: CartItem = { product: props.product, amount: props.amount };
 
 		shoppingCart.products[props.product.id] = cartItem;
@@ -51,7 +51,7 @@ export const reducer = createReducer(
 		return { ...state, shoppingCart: shoppingCart };
 	}),
 	on(ShopActions.removeItemFromCart, (state, props): ShopState => {
-		const shoppingCart = { ...state.shoppingCart };
+		const shoppingCart = { ...state.shoppingCart, products: { ...state.shoppingCart.products } };
 		delete shoppingCart.products[props.productId];
 
 		return { ...state, shoppingCart: shoppingCart };

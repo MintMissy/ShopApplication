@@ -38,8 +38,13 @@
 			</div>
 
 			<div class="product__actions">
-				<app-counter></app-counter>
-				<button mat-raised-button color="accent">Add to Cart</button>
+				<app-counter [startValue]="0" [minValue]="0" (valueChange)="onProductCountChange($event)"></app-counter>
+				<ng-container *ngIf="this.amountInCart <= 0; else removeFromCart">
+					<button mat-raised-button color="accent" (click)="onAddToCart()">Add to Cart</button>
+				</ng-container>
+				<ng-template #removeFromCart>
+					<button mat-raised-button color="accent" (click)="onRemoveFromCart()">Remove Cart</button>
+				</ng-template>
 			</div>
 		</div>
 		<app-image-carousel class="product__carousel" [images]="product.images"> </app-image-carousel>

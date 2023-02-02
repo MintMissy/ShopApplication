@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map } from 'rxjs';
 import { Product } from '../../model/product.model';
 import { ShopFacade } from '../../state/shop.facade';
 import { SearchFilters } from '../../ui/search-filters/search-filters.component';
@@ -11,8 +11,15 @@ import { SearchFilters } from '../../ui/search-filters/search-filters.component'
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsPageComponent implements OnInit {
-	products$: Observable<Product[]> = this.shopFacade.products$;
-	categories$: Observable<string[]> = this.shopFacade.categories$;
+	products$ = this.shopFacade.products$;
+	categories$ = this.shopFacade.categories$;
+	productsInCart$ = this.shopFacade.productsInCart$.pipe(
+		map((products) => {
+			const productsObject: { [productId: number]: boolean } = {};
+			products.forEach((product) => (productsObject[product.product.id] = true));
+			return productsObject;
+		})
+	);
 
 	constructor(private shopFacade: ShopFacade) {}
 
@@ -23,5 +30,13 @@ export class ProductsPageComponent implements OnInit {
 
 	onFiltersApply(filters: SearchFilters) {
 		this.shopFacade.updateFilters(filters);
+	}
+
+	onAddToCart(product: Product) {
+		this.shopFacade.addToCart({ product: product, amount: 1 });
+	}
+
+	onRemoveFromCart(product: Product) {
+		this.shopFacade.removeItemFromCart(product.id);
 	}
 }

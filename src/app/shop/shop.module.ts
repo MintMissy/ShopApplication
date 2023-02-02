@@ -17,9 +17,9 @@ import * as fromShop from './state/shop.reducer';
 import { CartItemListComponent } from './ui/cart-item-list/cart-item-list.component';
 import { CartItemComponent } from './ui/cart-item/cart-item.component';
 import { ProductCardComponent } from './ui/product-card/product-card.component';
+import { ProductsListComponent } from './ui/products-list/products-list.component';
 import { PurchasePreviewComponent } from './ui/purchase-preview/purchase-preview.component';
 import { SearchFiltersComponent } from './ui/search-filters/search-filters.component';
-import { ProductsListComponent } from './ui/products-list/products-list.component';
 
 @NgModule({
 	declarations: [
@@ -33,7 +33,7 @@ import { ProductsListComponent } from './ui/products-list/products-list.componen
 		PurchasePreviewComponent,
 		SumUpCartPipe,
 		ProductPricePipe,
-  ProductsListComponent,
+		ProductsListComponent,
 	],
 	imports: [
 		CommonModule,

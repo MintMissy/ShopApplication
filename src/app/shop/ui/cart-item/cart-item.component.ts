@@ -22,4 +22,8 @@ export class CartItemComponent {
 			this.itemUpdate.emit({ ...this.cartItem, amount: newAmount });
 		}
 	}
+
+	onDeleteItem() {
+		this.itemRemove.emit(this.cartItem?.product.id);
+	}
 }

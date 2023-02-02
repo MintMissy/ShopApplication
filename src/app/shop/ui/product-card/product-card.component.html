@@ -1,16 +1,21 @@
 <mat-card class="card">
-	<img class="card__image" mat-card-image [src]="product.thumbnail" alt="" aria-hidden="true" />
+	<img class="card__image" mat-card-image [src]="product?.thumbnail" alt="" aria-hidden="true" />
 	<mat-card-header>
-		<mat-card-title class="card__title">{{ product.title }}</mat-card-title>
+		<mat-card-title class="card__title">{{ product?.title }}</mat-card-title>
 	</mat-card-header>
 	<mat-card-content>
 		<div class="card__price">
-			<div class="card__price__original">${{ product.price }}</div>
-			<div class="card__price__now">${{ product | productPrice }}</div>
+			<div class="card__price__original">${{ product?.price }}</div>
+			<div class="card__price__now">${{ product !== undefined ? (product | productPrice) : -1 }}</div>
 		</div>
 	</mat-card-content>
 	<mat-card-actions class="card__actions">
-		<button mat-raised-button color="primary">Add to Cart</button>
-		<button mat-raised-button [routerLink]="['/', 'product', product.id]">View</button>
+		<ng-container *ngIf="!isInCart; else notInCart">
+			<button mat-raised-button color="primary" (click)="onAddToCard()">Add to Cart</button>
+		</ng-container>
+		<ng-template #notInCart>
+			<button mat-raised-button color="warn" (click)="onRemoveFromCard()">Remove from Cart</button>
+		</ng-template>
+		<button mat-raised-button [routerLink]="['/', 'product', product?.id]">View</button>
 	</mat-card-actions>
 </mat-card>

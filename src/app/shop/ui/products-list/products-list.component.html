@@ -2,5 +2,8 @@
 	<app-product-card
 		*ngFor="let product of products; trackBy: trackProduct"
 		[product]="product"
+		[isInCart]="!!productsInCart && productsInCart[product.id]"
+		(addToCart)="onAddToCard($event)"
+		(removeFromCart)="onRemoveFromCard($event)"
 	></app-product-card>
 </div>

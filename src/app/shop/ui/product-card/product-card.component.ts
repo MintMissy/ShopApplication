@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../model/product.model';
 
 @Component({
@@ -8,23 +8,16 @@ import { Product } from '../../model/product.model';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardComponent {
-	@Input() product: Product = {
-		id: 1,
-		title: 'iPhone 9',
-		description: 'An apple mobile which is nothing like apple',
-		price: 549,
-		discountPercentage: 12.96,
-		rating: 4.69,
-		stock: 94,
-		brand: 'Apple',
-		category: 'smartphones',
-		thumbnail: 'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
-		images: [
-			'https://i.dummyjson.com/data/products/1/1.jpg',
-			'https://i.dummyjson.com/data/products/1/2.jpg',
-			'https://i.dummyjson.com/data/products/1/3.jpg',
-			'https://i.dummyjson.com/data/products/1/4.jpg',
-			'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
-		],
-	};
+	@Input() product: Product | undefined;
+	@Input() isInCart: boolean | undefined;
+	@Output() addToCart = new EventEmitter<Product>();
+	@Output() removeFromCart = new EventEmitter<Product>();
+
+	onAddToCard() {
+		this.addToCart.emit(this.product);
+	}
+
+	onRemoveFromCard() {
+		this.removeFromCart.emit(this.product);
+	}
 }

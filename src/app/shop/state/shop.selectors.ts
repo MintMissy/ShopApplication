@@ -41,6 +41,13 @@ export const selectCategories = createSelector(selectShopState, (state) => {
 	return state.categories;
 });
 
+export const selectAmountInCart = (productId: number) => {
+	return createSelector(selectShopState, (state) => {
+		const products = state.shoppingCart.products;
+		return !Object.hasOwn(products, productId) ? 0 : products[productId].amount
+	})
+}
+
 export const selectItemsFromCart = createSelector(selectShopState, (state) => {
 	return Object.values(state.shoppingCart.products);
 });
