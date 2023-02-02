@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ShopFacade } from 'src/app/shop/state/shop.facade';
 
 @Component({
 	selector: 'app-navbar',
@@ -6,4 +7,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 	styleUrls: ['./navbar.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+	itemsInCart$ = this.shopFacade.productsInCart$;
+
+	constructor(private shopFacade: ShopFacade) {
+		
+	}
+}

@@ -7,8 +7,16 @@
 		<ul class="links">
 			<li class="links__item">
 				<a class="links__link links__link--cart" routerLink="cart" aria-label="cart">
-					<!-- TODO items in cart -->
-					<mat-icon matBadge="1" matBadgePosition="above after" matBadgeColor="accent"> shopping_cart </mat-icon>
+					<ng-container *ngIf="itemsInCart$ | async as itemsInCart">
+						<mat-icon
+							[matBadge]="itemsInCart.length"
+							[matBadgeHidden]="itemsInCart === null || itemsInCart.length === 0"
+							matBadgePosition="above after"
+							matBadgeColor="accent"
+						>
+							shopping_cart
+						</mat-icon>
+					</ng-container>
 				</a>
 			</li>
 		</ul>
