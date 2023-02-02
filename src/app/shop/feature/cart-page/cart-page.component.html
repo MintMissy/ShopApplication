@@ -1,8 +1,15 @@
 <div class="page">
 	<h1 class="cart__title">Cart</h1>
-	<app-cart-item-list
-		[cartItems]="productsInCart$ | async"
-		(amountChange)="onAmountChange($event)"
-		(productRemove)="onProductRemove($event)"
-	></app-cart-item-list>
+	<ng-container *ngIf="productsInCart$ | async as cartItems;">
+		<ng-container *ngIf="cartItems.length > 0; else emptyCart">
+			<app-cart-item-list
+			[cartItems]="cartItems"
+			(itemUpdate)="onCartItemUpdate($event)"
+			(itemRemove)="onCartItemRemove($event)"
+		></app-cart-item-list>
+		</ng-container>
+		<ng-template #emptyCart>
+			<p>Cart is empty.</p>
+		</ng-template>
+	</ng-container>
 </div>

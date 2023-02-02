@@ -9,7 +9,17 @@ import { CartItem } from '../../model/shopping-cart.model';
 })
 export class CartItemComponent {
 	@Input() cartItem: CartItem | undefined | null;
-	
-	@Output() amountChange = new EventEmitter<CartItem>();
-	@Output() productRemove = new EventEmitter<number>();
+
+	@Output() itemUpdate = new EventEmitter<CartItem>();
+	@Output() itemRemove = new EventEmitter<number>();
+
+	get product() {
+		return this.cartItem?.product;
+	}
+
+	onAmountChange(newAmount: number) {
+		if (this.cartItem) {
+			this.itemUpdate.emit({ ...this.cartItem, amount: newAmount });
+		}
+	}
 }

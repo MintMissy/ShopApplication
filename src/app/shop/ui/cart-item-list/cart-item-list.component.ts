@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product } from '../../model/product.model';
 import { CartItem } from '../../model/shopping-cart.model';
 
 @Component({
@@ -11,18 +10,18 @@ import { CartItem } from '../../model/shopping-cart.model';
 export class CartItemListComponent {
 	@Input() cartItems: CartItem[] | null = [];
 
-	@Output() amountChange = new EventEmitter<CartItem>();
-	@Output() productRemove = new EventEmitter<number>();
+	@Output() itemUpdate = new EventEmitter<CartItem>();
+	@Output() itemRemove = new EventEmitter<number>();
 
 	trackCartItem(index: number, cartItem: CartItem) {
 		return cartItem.product.id;
 	}
 
-	onProductRemove(productId: number) {
-		this.productRemove.emit(productId);
+	onCartItemRemove(productId: number) {
+		this.itemRemove.emit(productId);
 	}
 
-	onAmountChange(cartItem: CartItem) {
-		this.amountChange.emit(cartItem);
+	onCartItemChange(cartItem: CartItem) {
+		this.itemUpdate.emit(cartItem);
 	}
 }

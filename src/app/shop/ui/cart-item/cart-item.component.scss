@@ -1,0 +1,21 @@
+.cart-item {
+	display: flex;
+	padding: 1rem;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+	gap: 1rem;
+
+	&__thumbnail {
+		width: 8rem;
+		height: 5rem;
+		object-fit: cover;
+	}
+
+	&__title {
+	}
+
+	&__actions {
+		display: flex;
+		margin-left: auto;
+		gap: 1rem;
+	}
+}

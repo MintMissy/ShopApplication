@@ -2,7 +2,7 @@
 	<app-cart-item
 		*ngFor="let cartItem of cartItems; trackBy: trackCartItem"
 		[cartItem]="cartItem"
-		(amountChange)="onAmountChange($event)"
-		(productRemove)="onProductRemove($event)"
+		(itemUpdate)="onCartItemChange($event)"
+		(itemRemove)="onCartItemRemove($event)"
 	></app-cart-item>
 </div>

@@ -42,7 +42,7 @@ export const reducer = createReducer(
 	on(ShopActions.updateFilters, (state, props): ShopState => {
 		return { ...state, searchFilters: props.newFilters };
 	}),
-	on(ShopActions.upsertProductToCart, (state, props): ShopState => {
+	on(ShopActions.upsertItemToCart, (state, props): ShopState => {
 		const shoppingCart = { ...state.shoppingCart };
 		const cartItem: CartItem = { product: props.product, amount: props.amount };
 
@@ -50,7 +50,7 @@ export const reducer = createReducer(
 
 		return { ...state, shoppingCart: shoppingCart };
 	}),
-	on(ShopActions.removeProductFromCart, (state, props): ShopState => {
+	on(ShopActions.removeItemFromCart, (state, props): ShopState => {
 		const shoppingCart = { ...state.shoppingCart };
 		delete shoppingCart.products[props.productId];
 

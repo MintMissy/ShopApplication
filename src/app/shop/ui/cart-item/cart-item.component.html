@@ -1,1 +1,13 @@
-{{ cartItem | json }}
+<div class="cart-item">
+	<img [src]="product?.thumbnail" alt="" aria-describedby="productTitle" class="cart-item__thumbnail" />
+	<p class="cart-item__title" id="productTitle">{{ product?.title }}</p>
+	<div class="cart-item__actions">
+		<app-counter
+		[startValue]="cartItem === undefined || cartItem === null ? 1 : cartItem.amount"
+		(valueChange)="onAmountChange($event)"
+		></app-counter>
+		<button mat-mini-fab>
+			<mat-icon><mat-icon>delete</mat-icon></mat-icon>
+		</button>
+	</div>
+</div>

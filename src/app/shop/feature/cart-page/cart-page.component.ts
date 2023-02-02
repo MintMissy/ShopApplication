@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Product } from '../../model/product.model';
 import { CartItem } from '../../model/shopping-cart.model';
 import { ShopFacade } from '../../state/shop.facade';
 
@@ -10,18 +9,15 @@ import { ShopFacade } from '../../state/shop.facade';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartPageComponent {
-onAmountChange($event: CartItem) {
-throw new Error('Method not implemented.');
-}
 	productsInCart$ = this.shopFacade.productsInCart$;
 
 	constructor(private shopFacade: ShopFacade) {}
 
-	onProductRemove(productId: number) {
-		this.shopFacade.removeProductFromCart(productId);
+	onCartItemRemove(productId: number) {
+		this.shopFacade.removeItemFromCart(productId);
 	}
 
-	onProductUpdate(product: Product, amount: number) {
-		this.shopFacade.updateProductInCard(product, amount);
+	onCartItemUpdate(cartItem: CartItem) {
+		this.shopFacade.updateItemInCard(cartItem.product, cartItem.amount);
 	}
 }

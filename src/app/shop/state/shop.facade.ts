@@ -4,18 +4,16 @@ import { Product } from '../model/product.model';
 import { SearchFilters } from '../ui/search-filters/search-filters.component';
 import { ShopActions } from './shop.actions';
 import {
-	selectCategories,
-	selectProduct,
+	selectCategories, selectItemsFromCart, selectProduct,
 	selectProducts,
-	selectProductsByCategory,
-	selectProductsFromCart
+	selectProductsByCategory
 } from './shop.selectors';
 
 @Injectable()
 export class ShopFacade {
 	products$ = this.store.select(selectProducts);
 	categories$ = this.store.select(selectCategories);
-	productsInCart$ = this.store.select(selectProductsFromCart);
+	productsInCart$ = this.store.select(selectItemsFromCart);
 
 	constructor(private store: Store) {}
 
@@ -43,11 +41,11 @@ export class ShopFacade {
 		this.store.dispatch(ShopActions.updateFilters({ newFilters: filters }));
 	}
 
-	removeProductFromCart(productId: number) {
-		this.store.dispatch(ShopActions.removeProductFromCart({ productId: productId }));
+	removeItemFromCart(productId: number) {
+		this.store.dispatch(ShopActions.removeItemFromCart({ productId: productId }));
 	}
 
-	updateProductInCard(product: Product, amount: number) {
-		this.store.dispatch(ShopActions.upsertProductToCart({ product: product, amount: amount }));
+	updateItemInCard(product: Product, amount: number) {
+		this.store.dispatch(ShopActions.upsertItemToCart({ product: product, amount: amount }));
 	}
 }

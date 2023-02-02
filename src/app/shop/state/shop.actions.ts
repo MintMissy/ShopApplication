@@ -1,5 +1,6 @@
 import { createAction, createActionGroup, emptyProps, props } from '@ngrx/store';
 import { Product } from '../model/product.model';
+import { CartItem } from '../model/shopping-cart.model';
 import { SearchFilters } from '../ui/search-filters/search-filters.component';
 
 export const loadShops = createAction('[Shop] Load Shops');
@@ -21,7 +22,7 @@ export const ShopActions = createActionGroup({
 		'Load Categories Success': props<{ categories: string[] }>(),
 		'Load Categories Failed': emptyProps(),
 		'Update Filters': props<{ newFilters: SearchFilters }>(),
-		'Upsert Product to Cart': props<{ product: Product, amount: number }>(),
-		'Remove Product from Cart': props<{ productId: number }>()
+		'Upsert Item to Cart': props<CartItem>(),
+		'Remove Item from Cart': props<{ productId: number }>()
 	},
 });
