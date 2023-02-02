@@ -1,1 +1,8 @@
-<p>basket-container works!</p>
+<div class="page">
+	<h1 class="cart__title">Cart</h1>
+	<app-cart-item-list
+		[cartItems]="productsInCart$ | async"
+		(amountChange)="onAmountChange($event)"
+		(productRemove)="onProductRemove($event)"
+	></app-cart-item-list>
+</div>

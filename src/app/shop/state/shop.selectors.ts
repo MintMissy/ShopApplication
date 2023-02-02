@@ -41,6 +41,10 @@ export const selectCategories = createSelector(selectShopState, (state) => {
 	return state.categories;
 });
 
+export const selectProductsFromCart = createSelector(selectShopState, (state) => {
+	return Object.values(state.shoppingCart.products);
+});
+
 export const selectProductFromCart = (productId: number) => {
 	return createSelector(selectShopState, (state) => {
 		return state.shoppingCart.products[productId];

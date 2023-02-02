@@ -1,1 +1,8 @@
-<p>basket works!</p>
+<div class="products-list">
+	<app-cart-item
+		*ngFor="let cartItem of cartItems; trackBy: trackCartItem"
+		[cartItem]="cartItem"
+		(amountChange)="onAmountChange($event)"
+		(productRemove)="onProductRemove($event)"
+	></app-cart-item>
+</div>
