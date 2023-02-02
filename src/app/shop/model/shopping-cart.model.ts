@@ -1,12 +1,12 @@
 import { Product } from './product.model';
 
 export type CartItem = {
-	item: Product;
+	product: Product;
 	amount: number;
 };
 
-export type ShopCart = {
-	items: {
-		[itemId: string]: CartItem;
+export type ShoppingCart = {
+	products: {
+		[productId: string]: CartItem;
 	};
 };

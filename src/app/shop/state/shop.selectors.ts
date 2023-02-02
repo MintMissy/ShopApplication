@@ -24,7 +24,7 @@ export const selectProductsByCategory = (category: string) => {
 			productName: null,
 			sortingType: null,
 		};
-		
+
 		products = applyProductFilters(searchFilters, products);
 
 		return products;
@@ -40,3 +40,9 @@ export const selectProduct = (productId: number) => {
 export const selectCategories = createSelector(selectShopState, (state) => {
 	return state.categories;
 });
+
+export const selectProductFromCart = (productId: number) => {
+	return createSelector(selectShopState, (state) => {
+		return state.shoppingCart.products[productId];
+	});
+};

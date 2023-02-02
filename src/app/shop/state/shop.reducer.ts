@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../model/product.model';
+import { CartItem, ShoppingCart } from '../model/shopping-cart.model';
 import { SearchFilters } from '../ui/search-filters/search-filters.component';
 import { ShopActions } from './shop.actions';
 
@@ -9,6 +10,7 @@ export interface ShopState {
 	products: Product[];
 	searchFilters: SearchFilters;
 	categories: string[];
+	shoppingCart: ShoppingCart;
 }
 
 export const initialState: ShopState = {
@@ -21,6 +23,9 @@ export const initialState: ShopState = {
 		sortingType: null,
 	},
 	categories: [],
+	shoppingCart: {
+		products: {},
+	},
 };
 
 export const reducer = createReducer(
@@ -36,5 +41,19 @@ export const reducer = createReducer(
 	}),
 	on(ShopActions.updateFilters, (state, props): ShopState => {
 		return { ...state, searchFilters: props.newFilters };
+	}),
+	on(ShopActions.upsertProductToCart, (state, props): ShopState => {
+		const shoppingCart = { ...state.shoppingCart };
+		const cartItem: CartItem = { product: props.product, amount: props.amount };
+
+		shoppingCart.products[props.product.id] = cartItem;
+
+		return { ...state, shoppingCart: shoppingCart };
+	}),
+	on(ShopActions.removeProductFromCart, (state, props): ShopState => {
+		const shoppingCart = { ...state.shoppingCart };
+		delete shoppingCart.products[props.productId];
+
+		return { ...state, shoppingCart: shoppingCart };
 	})
 );

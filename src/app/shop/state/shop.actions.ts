@@ -20,6 +20,8 @@ export const ShopActions = createActionGroup({
 		'Load Categories': emptyProps,
 		'Load Categories Success': props<{ categories: string[] }>(),
 		'Load Categories Failed': emptyProps(),
-		'Update Filters': props<{newFilters: SearchFilters}>(),
+		'Update Filters': props<{ newFilters: SearchFilters }>(),
+		'Upsert Product to Cart': props<{ product: Product, amount: number }>(),
+		'Remove Product from Cart': props<{ productId: number }>()
 	},
 });
