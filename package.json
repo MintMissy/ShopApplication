@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format": "prettier --write \"./src/**/*.{ts,css,html,json}\"",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "deploy": "ng deploy --base-href=\"https://mintmissy.github.io/ShopApplication/\""
   },
   "private": true,
   "dependencies": {
