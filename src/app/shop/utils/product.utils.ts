@@ -10,10 +10,10 @@ export function sortProductList(searchFilters: SearchFilters, products: import("
 			products = products.sort((productA, productB) => (productA.category > productB.category ? 1 : -1));
 			break;
 		case 'MaximumPrice':
-			products = products.sort((productA, productB) => (productA.price < productB.price ? 1 : -1));
+			products = products.sort((productA, productB) => (getProductPrice(productA) < getProductPrice(productB) ? 1 : -1));
 			break;
 		case 'MinimumPrice':
-			products = products.sort((productA, productB) => (productA.price > productB.price ? 1 : -1));
+			products = products.sort((productA, productB) => (getProductPrice(productA) > getProductPrice(productB) ? 1 : -1));
 			break;
 		case 'NameAscending':
 			products = products.sort((productA, productB) => (productA.title > productB.title ? 1 : -1));
@@ -44,4 +44,12 @@ export function applyProductFilters(searchFilters: SearchFilters, products: Prod
 		products = products.filter((product) => product.price <= maxPrice);
 	}
 	return products;
+}
+
+/**
+ * Gets product price after applying discounts
+ * @param product 
+ */
+export function getProductPrice(product: Product) {
+	return product.price * (100 - product.discountPercentage) * 0.01
 }
