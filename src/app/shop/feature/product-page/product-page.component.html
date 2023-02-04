@@ -37,7 +37,7 @@
 			</div>
 
 			<div class="product__actions">
-				<app-counter [startValue]="0" [minValue]="0" (valueChange)="onProductCountChange($event)"></app-counter>
+				<app-counter [startValue]="amountInCart" [minValue]="0" (valueChange)="onProductCountChange($event)"></app-counter>
 				<ng-container *ngIf="this.amountInCart <= 0; else removeFromCart">
 					<button mat-raised-button color="accent" (click)="onAddToCart()">Add to Cart</button>
 				</ng-container>

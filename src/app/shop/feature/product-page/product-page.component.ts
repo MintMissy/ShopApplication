@@ -53,13 +53,14 @@ export class ProductPageComponent implements OnInit, OnDestroy {
 						.subscribe((amount) => {
 							this.amountInCart = amount;
 							this.counterComponent?.editValue(amount);
+							this.changeDetector.markForCheck();
 						});
 				}),
 				filter((product) => product !== undefined),
 				switchMap((product) => this.shopFacade.getProductsByCategory(product!.category)),
 				tap((similarProducts) => {
 					this.similarProducts = similarProducts;
-					this.changeDetector.markForCheck()
+					this.changeDetector.markForCheck();
 				})
 			)
 			.subscribe();
