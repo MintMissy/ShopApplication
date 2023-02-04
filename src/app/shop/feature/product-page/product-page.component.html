@@ -3,15 +3,14 @@
 		<div class="product__info">
 			<h1 class="product__title">{{ product.title }}</h1>
 			<div class="rating">
-				<!-- TODO reviews -->
 				<div class="rating__stars">
-					<mat-icon class="rating__star">star</mat-icon>
-					<mat-icon class="rating__star">star</mat-icon>
-					<mat-icon class="rating__star">star</mat-icon>
-					<mat-icon class="rating__star">star</mat-icon>
-					<mat-icon class="rating__star">star</mat-icon>
+					<mat-icon class="rating__star" *ngIf="product.rating > 0.5">star</mat-icon>
+					<mat-icon class="rating__star" *ngIf="product.rating > 1.5">star</mat-icon>
+					<mat-icon class="rating__star" *ngIf="product.rating > 2.5">star</mat-icon>
+					<mat-icon class="rating__star" *ngIf="product.rating > 3.5">star</mat-icon>
+					<mat-icon class="rating__star" *ngIf="product.rating > 4.5">star</mat-icon>
 				</div>
-				<div class="rating__reviews-amount">(15 Reviews)</div>
+				<div class="rating__reviews-amount">(Rating {{product.rating}})</div>
 			</div>
 
 			<h2 class="product__title-description">Product Description:</h2>
