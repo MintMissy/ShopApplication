@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
 import { Product } from '../model/product.model';
 
 type ProductsResponse = {
@@ -16,36 +15,22 @@ export class ShopService {
 	constructor(private httpClient: HttpClient) {}
 
 	getProduct(productId: string) {
-		return this.httpClient
-			.get<Product>(`${this.API_URL}/${productId}`)
-			.pipe(catchError((error) => this.handleError(error)));
+		return this.httpClient.get<Product>(`${this.API_URL}/${productId}`);
 	}
 
 	getAllProducts() {
-		return this.httpClient.get<ProductsResponse>(this.API_URL).pipe(catchError((error) => this.handleError(error)));
+		return this.httpClient.get<ProductsResponse>(this.API_URL);
 	}
 
 	getProductsByQuery(query: string) {
-		return this.httpClient
-			.get<ProductsResponse>(`${this.API_URL}/search?q=${query}`)
-			.pipe(catchError((error) => this.handleError(error)));
+		return this.httpClient.get<ProductsResponse>(`${this.API_URL}/search?q=${query}`);
 	}
 
 	getProductsByCategory(category: string) {
-		return this.httpClient
-			.get<ProductsResponse>(`${this.API_URL}/category/${category}`)
-			.pipe(catchError((error) => this.handleError(error)));
+		return this.httpClient.get<ProductsResponse>(`${this.API_URL}/category/${category}`);
 	}
 
 	getCategories() {
-		return this.httpClient
-			.get<string[]>(`${this.API_URL}/categories`)
-			.pipe(catchError((error) => this.handleError(error)));
-	}
-
-	private handleError(error: any) {
-		return throwError(() => error)
-		// console.log(error);
-		// return throwError(() => error.message);
+		return this.httpClient.get<string[]>(`${this.API_URL}/categories`);
 	}
 }
