@@ -1,5 +1,5 @@
 <div class="counter">
-	<button matRipple class="counter__button button-decrement" (click)="onDecrement()">
+	<button matRipple class="counter__button button-decrement" (click)="onDecrement()" data-testid="decrement">
 		<mat-icon>remove</mat-icon>
 	</button>
 	<input
@@ -7,6 +7,9 @@
 		type="number"
 		[ngModel]="value"
 		(ngModelChange)="onValueChange($event)"
+		data-testid="input"
 	/>
-	<button matRipple class="counter__button button-increment" (click)="onIncrement()"><mat-icon>add</mat-icon></button>
+	<button matRipple class="counter__button button-increment" (click)="onIncrement()" data-testid="increment">
+		<mat-icon>add</mat-icon>
+	</button>
 </div>
