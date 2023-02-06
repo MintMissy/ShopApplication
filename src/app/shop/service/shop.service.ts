@@ -11,7 +11,7 @@ type ProductsResponse = {
 	providedIn: 'root',
 })
 export class ShopService {
-	private readonly API_URL = 'https://dummyjson.com/products';
+	readonly API_URL = 'https://dummyjson.com/products';
 
 	constructor(private httpClient: HttpClient) {}
 
@@ -44,7 +44,8 @@ export class ShopService {
 	}
 
 	private handleError(error: any) {
-		console.log(error);
-		return throwError(() => error.message);
+		return throwError(() => error)
+		// console.log(error);
+		// return throwError(() => error.message);
 	}
 }
