@@ -4,10 +4,17 @@
 		[categories]="categories$ | async"
 		(filtersApply)="onFiltersApply($event)"
 	></app-search-filters>
-	<app-products-list
-		[products]="products$ | async"
-		[productsInCart]="productsInCart$ | async"
-		(addToCart)="onAddToCart($event)"
-		(removeFromCart)="onRemoveFromCart($event)"
-	></app-products-list>
+	<ng-container *ngIf="products$ | async as products">
+		<ng-container *ngIf="products.length > 0; else emptyProductsList">
+			<app-products-list
+				[products]="products"
+				[productsInCart]="productsInCart$ | async"
+				(addToCart)="onAddToCart($event)"
+				(removeFromCart)="onRemoveFromCart($event)"
+			></app-products-list>
+		</ng-container>
+		<ng-template #emptyProductsList>
+			<p class="empty-products-description">No products were found matching your selection.</p>
+		</ng-template>
+	</ng-container>
 </div>
